@@ -1,7 +1,12 @@
-version: '3'
+version: '3.4'
+
 services:
   zookeeper:
     image: confluentinc/cp-zookeeper:latest
+    ports:
+      - 2181:2181
+    container_name: zookeeper
+    hostname: zookeeper
     networks: 
       - broker-kafka
     environment:
@@ -10,6 +15,7 @@ services:
 
   kafka:
     image: confluentinc/cp-kafka:latest
+    container_name: kafka
     networks: 
       - broker-kafka
     depends_on:
